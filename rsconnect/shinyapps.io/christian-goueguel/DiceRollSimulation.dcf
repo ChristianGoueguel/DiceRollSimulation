@@ -1,0 +1,12 @@
+name: DiceRollSimulation
+title: DiceRollSimulation
+username: christian-goueguel
+account: christian-goueguel
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13041785
+bundleId: 9243639
+url: https://christian-goueguel.shinyapps.io/DiceRollSimulation/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
