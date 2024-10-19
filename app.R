@@ -46,20 +46,22 @@ ui <- fluidPage(
     div(class = "main-container",
         div(class = "sidebar-column",
             div(class = "sidebar-panel",
-                p("This simulation shows that as the number of dice rolls (Trials) 
-                  increases, the average outcome (Mean Value) converges toward the expected 
-                  value of 3.5. This result illustrates the law of large numbers, 
-                  which predicts that with a sufficiently large sample size, the 
-                  empirical mean will approach the theoretical mean."),
+                p(
+                "This simulation shows that as the number of dice rolls (Trials) 
+                increases, the average outcome (Mean Value) converges toward the expected 
+                value of 3.5. This result illustrates the law of large numbers, 
+                which predicts that with a sufficiently large sample size, the 
+                empirical mean will approach the theoretical mean."),
                 numericInput("min_trials", "Minimum Trials:", value = 100, min = 1),
                 numericInput("max_trials", "Maximum Trials:", value = 1000, min = 1),
                 numericInput("step_trials", "Step Size:", value = 100, min = 1),
-                sliderInput("num_trials",
-                            "Number of Trials:",
-                            min = 100,
-                            max = 1000,
-                            value = 500,
-                            step = 100),
+                sliderInput(
+                    "num_trials",
+                    "Number of Trials:",
+                    min = 100,
+                    max = 1000,
+                    value = 500,
+                    step = 100),
                 actionButton("run", "Run Simulation")
             )
         ),
