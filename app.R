@@ -3,7 +3,7 @@ library(tidyverse)
 library(ggplot2)
 library(patchwork)
 
-# Define UI
+
 ui <- fluidPage(
     tags$head(
         tags$style(HTML("
@@ -70,29 +70,27 @@ ui <- fluidPage(
     )
 )
 
-# Define server logic
+
 server <- function(input, output, session) {
-    # Reactive values to store the current slider parameters
     sliderParams <- reactiveValues(min = 100, max = 1000, step = 100, value = 500)
-    
-    # Update slider when min, max, or step changes
     observe({
         newMin <- max(1, input$min_trials)
         newMax <- max(newMin, input$max_trials)
         newStep <- max(1, min(input$step_trials, newMax - newMin))
         
-        # Only update if there's a change to avoid infinite loop
         if (newMin != sliderParams$min || newMax != sliderParams$max || newStep != sliderParams$step) {
             sliderParams$min <- newMin
             sliderParams$max <- newMax
             sliderParams$step <- newStep
             sliderParams$value <- min(max(sliderParams$value, newMin), newMax)
             
-            updateSliderInput(session, "num_trials",
-                              min = newMin,
-                              max = newMax,
-                              step = newStep,
-                              value = sliderParams$value)
+            updateSliderInput(
+                session, "num_trials",
+                min = newMin,
+                max = newMax,
+                step = newStep,
+                value = sliderParams$value
+                )
         }
     })
     
@@ -182,6 +180,7 @@ server <- function(input, output, session) {
             )
         })
 }
+
 shinyApp(ui = ui, server = server)
 
 
